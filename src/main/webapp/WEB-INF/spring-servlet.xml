@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xmlns:mvc="http://www.springframework.org/schema/mvc"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd http://www.alibaba.com/schema/stat http://www.alibaba.com/schema/stat.xsd http://www.springframework.org/schema/mvc http://www.springframework.org/schema/mvc/spring-mvc.xsd">
+
+    <context:annotation-config/>
+    <!--启动注解驱动的springmvc功能-->
+    <mvc:annotation-driven/>
+    <!--启动扫秒包的功能-->
+    <context:component-scan base-package="com.tang.permission.controller"/>
+    <context:component-scan base-package="com.tang.permission.service"/>
+    
+    <!--配置静态资源可以被访问-->
+    <mvc:resources mapping="/js/**" location="/js/"/>
+    <mvc:resources mapping="/css/**" location="/css/"/>
+    <mvc:resources mapping="/assets/**" location="/assets/"/>
+    <mvc:resources mapping="/bootstrap3.3.5/**" location="/bootstrap3.3.5/"/>
+    <mvc:resources mapping="/common/**" location="/common/"/>
+    <mvc:resources mapping="/ztree/**" location="/ztree/"/>
+    
+    <!--以什么杨的格式返回数据json jsp页面 视图渲染-->
+    <bean class="org.springframework.web.servlet.view.BeanNameViewResolver"/>
+    <bean class="com.tang.permission.common.SpringExceptionResolver"/>
+
+    <!--json 返回-->
+    <bean id="jsonView" class="org.springframework.web.servlet.view.json.MappingJackson2JsonView"/>
+
+    <!-- jsp返回页面 -->
+    <bean class="org.springframework.web.servlet.view.InternalResourceViewResolver">
+        <property name="prefix" value="/WEB-INF/views/"/>
+        <property name="suffix" value=".jsp"/>
+    </bean>
+
+    <bean class="com.tang.permission.common.ApplicationContextHelpler" lazy-init="false"/>
+
+    <mvc:interceptors>
+        <bean class="com.tang.permission.common.HttpIterceptor"/>
+    </mvc:interceptors>
+
+
+
+</beans>

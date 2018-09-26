@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE configuration
+        PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-config.dtd">
+<configuration>
+
+<!--    配置mybatis默认初始化的常量值 Configuration类-->
+    <settings>
+        <setting name="useGeneratedKeys" value="true"/>
+    </settings>
+    <typeAliases>
+        <package name="com.tang.permission.model"></package>
+    </typeAliases>
+
+    <!--在sql语句前后执行一些事情-->
+<!--
+    <plugins>
+        <plugin interceptor=""></plugin>
+    </plugins>
+-->
+    <!--处理sql查询出的值无法与本地类进行映射是   http://www.mybatis.org/mybatis-3/zh/configuration.html#typeHandlers-->
+<!--
+    <typeHandlers>
+        <typeHandler handler=""
+    </typeHandlers>
+-->
+</configuration>
